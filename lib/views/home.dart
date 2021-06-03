@@ -51,6 +51,7 @@ class _HomeState extends State<Home> {
                 SizedBox(height: 40),
                 Text(
                   'Welcome to $TITLE',
+                  textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 20),
@@ -61,6 +62,7 @@ class _HomeState extends State<Home> {
                 SizedBox(height: 40),
                 Text(
                   'How it works',
+                  textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 20),
