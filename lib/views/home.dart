@@ -42,13 +42,13 @@ class _HomeState extends State<Home> {
       ),
       child: SafeArea(
         top: false,
-        minimum: EdgeInsets.all(60),
+        minimum: EdgeInsets.fromLTRB(40, 0, 40, 0),
         child: Center(
           child: Container(
-            padding: EdgeInsets.only(top: 60),
             constraints: BoxConstraints(maxWidth: 500),
             child: Column(
               children: <Widget>[
+                SizedBox(height: 40),
                 Text(
                   'Welcome to $TITLE',
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
@@ -147,6 +147,7 @@ class _HomeState extends State<Home> {
                     Navigator.pushNamed(context, '/live');
                   },
                 ),
+                SizedBox(height: 40),
               ],
             ),
           ),
