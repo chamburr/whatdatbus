@@ -213,7 +213,7 @@ class _LiveState extends State<Live> {
           ),
           SafeArea(
             top: false,
-            minimum: EdgeInsets.all(60),
+            minimum: EdgeInsets.all(40),
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Container(
