@@ -37,7 +37,7 @@ class _LiveState extends State<Live> {
     _detector = GoogleMlKit.vision.textDetector();
 
     setState(() {
-      _busNumber = 'Not Found';
+      _busNumber = '';
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -72,6 +72,8 @@ class _LiveState extends State<Live> {
           ],
         ),
       );
+
+      return;
     }
 
     await Tflite.loadModel(
@@ -215,7 +217,7 @@ class _LiveState extends State<Live> {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                width: double.infinity,
+                width: _busNumber == '' ? 0 : double.infinity,
                 padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                 constraints: BoxConstraints(maxWidth: 500),
                 decoration: BoxDecoration(
@@ -223,7 +225,7 @@ class _LiveState extends State<Live> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
-                  'Bus $_busNumber',
+                  _busNumber == '' ? '' : 'Bus $_busNumber',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
