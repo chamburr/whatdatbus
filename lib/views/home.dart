@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
         child: Center(
           child: Container(
             constraints: BoxConstraints(maxWidth: 500),
-            child: Column(
+            child: ListView(
               children: <Widget>[
                 SizedBox(height: 40),
                 Text(
