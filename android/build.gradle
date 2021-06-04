@@ -1,32 +1,3 @@
-android {
-    compileSdkVersion 29
-
-    buildTypes {
-        release {
-            aaptOptions {
-                ignoreAssetsPattern '!mlkit_pose:!mlkit_label_default_model:'
-            }
-        }
-        debug {
-            aaptOptions {
-                ignoreAssetsPattern '!mlkit_pose:!mlkit_label_default_model:'
-            }
-        }
-    }
-
-    packagingOptions {
-        exclude 'lib/**/libtranslate_jni.so'
-        exclude 'lib/**/libdigitalink.so'
-        exclude 'lib/**/libxeno_native.so'
-        exclude 'lib/**/libmlkitcommonpipeline.so'
-        exclude 'lib/**/libbarhopper_v2.so'
-        exclude 'lib/**/libclassifier_jni.so'
-        exclude 'lib/**/libface_detector_v2_jni.so'
-        exclude 'lib/**/libtensorflowlite_jni.so'
-        exclude 'lib/**/liblanguage_id_jni.so'
-    }
-}
-
 buildscript {
     ext.kotlin_version = '1.3.50'
     repositories {
