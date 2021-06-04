@@ -101,8 +101,6 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
-  - path_provider (0.0.1):
-    - Flutter
   - PromisesObjC (1.2.12)
   - Protobuf (3.17.0)
   - TensorFlowLiteC (2.2.0)
@@ -114,7 +112,6 @@ DEPENDENCIES:
   - camera (from `.symlinks/plugins/camera/ios`)
   - Flutter (from `Flutter`)
   - google_ml_kit (from `.symlinks/plugins/google_ml_kit/ios`)
-  - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - tflite (from `.symlinks/plugins/tflite/ios`)
 
 SPEC REPOS:
@@ -147,8 +144,6 @@ EXTERNAL SOURCES:
     :path: Flutter
   google_ml_kit:
     :path: ".symlinks/plugins/google_ml_kit/ios"
-  path_provider:
-    :path: ".symlinks/plugins/path_provider/ios"
   tflite:
     :path: ".symlinks/plugins/tflite/ios"
 
@@ -173,7 +168,6 @@ SPEC CHECKSUMS:
   MLKitVision: 51385878c9100024478971856510f9271ff555b5
   MLKitVisionKit: 92bddf95a91152419cdf3cbf2c2aed43cdf97cc2
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Protobuf: 7327d4444215b5f18e560a97f879ff5503c4581c
   TensorFlowLiteC: b3ab9e867b0b71052ca102a32a786555b330b02e
