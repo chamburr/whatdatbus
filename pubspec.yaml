@@ -27,7 +27,6 @@ dependencies:
   camera: ^0.8.1
   google_ml_kit: ^0.5.1
   image: ^3.0.2
-  path_provider: ^1.6.28
   tflite: 1.1.1
 
   # The following adds the Cupertino Icons font to your application.

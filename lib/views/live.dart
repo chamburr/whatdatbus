@@ -1,10 +1,9 @@
-import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image/image.dart' as imglib;
-import 'package:path_provider/path_provider.dart';
 import 'package:tflite/tflite.dart';
 
 import '../constants.dart';
@@ -24,6 +23,13 @@ class _LiveState extends State<Live> {
   TextDetector _detector;
   int _detecting = 0;
   String _busNumber;
+
+  @override
+  void setState(state) {
+    if (mounted) {
+      super.setState(state);
+    }
+  }
 
   @override
   void initState() {
@@ -151,25 +157,24 @@ class _LiveState extends State<Live> {
     image = imglib.grayscale(image);
     image = imglib.contrast(image, 200);
 
-    imglib.JpegEncoder jpgEncoder = imglib.JpegEncoder();
-    List<int> bytes = jpgEncoder.encodeImage(image);
+    InputImage inputImage = InputImage.fromBytes(
+      bytes: Uint8List.fromList(
+        image.data.map((element) => element & 255).toList(),
+      ),
+      inputImageData: InputImageData(
+        size: Size(image.width.toDouble(), image.height.toDouble()),
+        imageRotation: InputImageRotation.Rotation_0deg,
+        inputImageFormat: InputImageFormat.YUV420,
+        planeData: [
+          InputImagePlaneMetadata(
+            bytesPerRow: image.width,
+            height: image.height,
+            width: image.width,
+          ),
+        ],
+      ),
+    );
 
-    String path = (await getApplicationDocumentsDirectory()).path;
-    await File('$path/image.jpg').writeAsBytes(bytes);
-
-    // The following code would be better, but it does not work.
-    // See https://github.com/bharat-biradar/Google-Ml-Kit-plugin/issues/45.
-    //
-    // InputImageData inputImageData = InputImageData(
-    //   size: Size(image.width.toDouble(), image.height.toDouble()),
-    //   imageRotation: InputImageRotation.Rotation_0deg,
-    // );
-    // InputImage inputImage = InputImage.fromBytes(
-    //   bytes: image.getBytes(),
-    //   inputImageData: inputImageData,
-    // );
-
-    InputImage inputImage = InputImage.fromFilePath('$path/image.jpg');
     RecognisedText result = await _detector.processImage(inputImage);
 
     String busNumber = 'Unknown';
