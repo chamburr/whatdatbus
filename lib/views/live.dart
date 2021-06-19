@@ -201,7 +201,7 @@ class _LiveState extends State<Live> {
         middle: Text(TITLE),
       ),
       child: Stack(
-        children: <Widget>[
+        children: [
           FutureBuilder<void>(
             future: _initController,
             builder: (context, snapshot) {

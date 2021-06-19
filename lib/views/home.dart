@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';
 
@@ -22,8 +24,30 @@ class _HomeState extends State<Home> {
                 title: Text('About'),
                 content: Container(
                   padding: EdgeInsets.only(top: 10),
-                  child: Text(
-                    '$TITLE $VERSION\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed dui facilisis, sodales tortor id, lacinia justo. Nunc sagittis luctus mi, vitae posuere libero rutrum sed. Nam eu malesuada sem. Pellentesque in leo sit amet justo aliquet eleifend. Vivamus facilisis facilisis feugiat.\n\n© 2021 COOL PERSON',
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      style: TextStyle(color: CupertinoColors.black),
+                      children: [
+                        TextSpan(
+                          text: '$TITLE v$VERSION\n',
+                        ),
+                        TextSpan(
+                          text: '$REPO_URL\n\n',
+                          style: TextStyle(
+                            color: CupertinoColors.systemBlue,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              launch('https://$REPO_URL');
+                            },
+                        ),
+                        TextSpan(
+                          text:
+                              'An app made by a group of students from Raffles Institution for their Innovation Programme (IvP) project. Special thanks to the teacher-mentor, Mr Justin Yap.\n\n© 2021 Han Cen, Lachlan Goh, Jerome Thio',
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 actions: [
@@ -56,7 +80,7 @@ class _HomeState extends State<Home> {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed dui facilisis, sodales tortor id, lacinia justo.',
+                  'This app helps you to board the bus by actively telling you what buses are currently in front of you.',
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 40),
@@ -79,11 +103,11 @@ class _HomeState extends State<Home> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Blah blah',
+                                'Video Tracking',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                'Use your camera to blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
+                                'Use your camera to track buses in front of you.',
                               ),
                             ],
                           ),
@@ -101,11 +125,11 @@ class _HomeState extends State<Home> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Blah blah',
+                                'Bus Detection',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                'Do some magic to blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
+                                'Do some magic to detect the bus number.',
                               ),
                             ],
                           ),
@@ -123,11 +147,11 @@ class _HomeState extends State<Home> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Blah blah',
+                                'Auditory Guide',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                'Tell you the blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
+                                'Tell you the bus number found by reading it out.',
                               ),
                             ],
                           ),
@@ -138,7 +162,7 @@ class _HomeState extends State<Home> {
                 ),
                 SizedBox(height: 40),
                 Text(
-                  'This app uses your blah blah blah and blah blah blah blah blah blah blah blah blah blah blah and surprise it uses your camera',
+                  'This app uses your camera continuously while you are on the detection page. We never upload or store your videos anywhere.',
                   style: TextStyle(fontSize: 14),
                   textAlign: TextAlign.center,
                 ),
