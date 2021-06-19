@@ -1,9 +1,13 @@
-# whatdatbus
+# What Dat Bus
 
-An app which aims to solve the problems that visually-impaired persons might face when boarding the bus by telling them what buses are currently in front of them.
+This app helps visually-impaired persons to board the bus by actively telling them what buses are currently in front of them.
 
-This was made for the [Innovation Programme (IvP)](https://www.moe.gov.sg/programmes/gifted-education/special-programmes).
+This is created by a group of students from Raffles Institution for their Innovation Programme (IvP) project.
 
-# License
+## Installation
 
-This app is licensed under the [MIT License](LICENSE).
+We don't recommend you to run this app yet, as it is still in its early stage of development work.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
