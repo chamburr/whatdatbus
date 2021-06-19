@@ -107,12 +107,15 @@ PODS:
   - tflite (1.1.1):
     - Flutter
     - TensorFlowLiteC
+  - url_launcher (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - camera (from `.symlinks/plugins/camera/ios`)
   - Flutter (from `Flutter`)
   - google_ml_kit (from `.symlinks/plugins/google_ml_kit/ios`)
   - tflite (from `.symlinks/plugins/tflite/ios`)
+  - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 SPEC REPOS:
   trunk:
@@ -146,6 +149,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/google_ml_kit/ios"
   tflite:
     :path: ".symlinks/plugins/tflite/ios"
+  url_launcher:
+    :path: ".symlinks/plugins/url_launcher/ios"
 
 SPEC CHECKSUMS:
   camera: a0ca5080336f7af47b88436e5e26da3dee5568f0
@@ -172,6 +177,7 @@ SPEC CHECKSUMS:
   Protobuf: 7327d4444215b5f18e560a97f879ff5503c4581c
   TensorFlowLiteC: b3ab9e867b0b71052ca102a32a786555b330b02e
   tflite: f0403a894740019d63ab5662253bba5b2dd37296
+  url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
 
 PODFILE CHECKSUM: fe0e1ee7f3d1f7d00b11b474b62dd62134535aea
 

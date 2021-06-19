@@ -1,16 +1,9 @@
 # whatdatbus
 
-A new Flutter project.
+An app which aims to solve the problems that visually-impaired persons might face when boarding the bus by telling them what buses are currently in front of them.
 
-## Getting Started
+This was made for the [Innovation Programme (IvP)](https://www.moe.gov.sg/programmes/gifted-education/special-programmes).
 
-This project is a starting point for a Flutter application.
+# License
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This app is licensed under the [MIT License](LICENSE).
