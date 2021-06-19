@@ -25,10 +25,13 @@ class _HomeState extends State<Home> {
                 content: Container(
                   padding: EdgeInsets.only(top: 10),
                   child: RichText(
+                    textAlign: TextAlign.center,
                     text: TextSpan(
-                      text: '$TITLE v$VERSION\n',
-                      style: DefaultTextStyle.of(context).style,
+                      style: TextStyle(color: CupertinoColors.black),
                       children: [
+                        TextSpan(
+                          text: '$TITLE v$VERSION\n',
+                        ),
                         TextSpan(
                           text: '$REPO_URL\n\n',
                           style: TextStyle(
@@ -36,15 +39,15 @@ class _HomeState extends State<Home> {
                           ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              launch('https://$REPO_URL/');
+                              launch('https://$REPO_URL');
                             },
                         ),
                         TextSpan(
-                            text:
-                                'An app made by a group of students from Raffles Institution for the Innovation Programme (IvP). Special thanks to our teacher-mentor, Mr Justin Yap.\n\n© 2021 Han Cen, Lachlan Goh, Jerome Thio')
+                          text:
+                              'An app made by a group of students from Raffles Institution for their Innovation Programme (IvP) project. Special thanks to the teacher-mentor, Mr Justin Yap.\n\n© 2021 Han Cen, Lachlan Goh, Jerome Thio',
+                        ),
                       ],
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ),
                 actions: [
@@ -77,7 +80,7 @@ class _HomeState extends State<Home> {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'This app aim to solve the problems that visually-impaired persons might face when boarding the bus by telling them what buses are currently in front of them',
+                  'This app helps you to board the bus by actively telling you what buses are currently in front of you.',
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 40),
@@ -100,7 +103,7 @@ class _HomeState extends State<Home> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Video Feed',
+                                'Video Tracking',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
@@ -126,7 +129,7 @@ class _HomeState extends State<Home> {
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                'Do some magic to detect the bus\' number.',
+                                'Do some magic to detect the bus number.',
                               ),
                             ],
                           ),
@@ -148,7 +151,7 @@ class _HomeState extends State<Home> {
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                'Tell you the bus number with Text-To-Speech.',
+                                'Tell you the bus number found by reading it out.',
                               ),
                             ],
                           ),
@@ -159,7 +162,7 @@ class _HomeState extends State<Home> {
                 ),
                 SizedBox(height: 40),
                 Text(
-                  'This app uses your camera and will continuously use it when you are on the detection page. We never upload or store your videos anywhere as it is all processed on the device.',
+                  'This app uses your camera continuously while you are on the detection page. We never upload or store your videos anywhere.',
                   style: TextStyle(fontSize: 14),
                   textAlign: TextAlign.center,
                 ),
