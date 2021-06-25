@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image/image.dart' as imglib;
 import 'package:tflite/tflite.dart';
@@ -21,6 +22,7 @@ class _LiveState extends State<Live> {
   CameraController _controller;
   Future<void> _initController;
   TextDetector _detector;
+  FlutterTts _tts;
   int _detecting = 0;
   String _busNumber;
 
@@ -45,6 +47,7 @@ class _LiveState extends State<Live> {
     }
 
     _detector = GoogleMlKit.vision.textDetector();
+    _tts = FlutterTts();
 
     setState(() {
       _busNumber = '';
@@ -197,6 +200,10 @@ class _LiveState extends State<Live> {
         break;
       }
     }
+
+    await _tts.setLanguage('en-US');
+    await _tts.stop();
+    await _tts.speak('Bus $busNumber');
 
     _detecting = DateTime.now().millisecondsSinceEpoch + 1000;
 
