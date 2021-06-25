@@ -131,20 +131,27 @@ class _LiveState extends State<Live> {
       return;
     }
 
-    imglib.Image image = imglib.Image(img.width, img.height);
+    int width = img.width;
+    int height = img.height;
+    imglib.Image image = imglib.Image(width, height);
 
     if (img.format.group == ImageFormatGroup.yuv420) {
-      for (int x = 0; x < image.width; x++) {
-        for (int y = 0; y < img.height * img.width; y += img.width) {
+      for (int x = 0; x < width; x++) {
+        for (int y = 0; y < width * height; y += width) {
           int pixel = img.planes[0].bytes[x + y];
           image.data[x + y] =
               (0xFF << 24) | (pixel << 16) | (pixel << 8) | pixel;
         }
       }
+
+      width = img.height;
+      height = img.width;
+
+      image = imglib.copyRotate(image, 90);
     } else if (img.format.group == ImageFormatGroup.bgra8888) {
       image = imglib.Image.fromBytes(
-        img.width,
-        img.height,
+        width,
+        height,
         img.planes[0].bytes,
         format: imglib.Format.bgra,
       );
@@ -153,10 +160,10 @@ class _LiveState extends State<Live> {
     dynamic element = elements[0]['rect'];
     image = imglib.copyCrop(
       image,
-      (element['x'] * img.width).round(),
-      (element['y'] * img.height).round(),
-      (element['w'] * img.width).round(),
-      (element['h'] * img.height).round(),
+      (element['x'] * width).round(),
+      (element['y'] * height).round(),
+      (element['w'] * width).round(),
+      (element['h'] * height).round(),
     );
     image = imglib.grayscale(image);
     image = imglib.contrast(image, 200);
