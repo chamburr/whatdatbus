@@ -36,7 +36,11 @@ class _LiveState extends State<Live> {
     super.initState();
 
     if (widget.cameras != null && widget.cameras.length >= 1) {
-      _controller = CameraController(widget.cameras[0], ResolutionPreset.max);
+      _controller = CameraController(
+        widget.cameras[0],
+        ResolutionPreset.max,
+        enableAudio: false,
+      );
       _initController = _controller.initialize();
     }
 
