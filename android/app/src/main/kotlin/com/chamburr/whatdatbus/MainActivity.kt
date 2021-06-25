@@ -1,4 +1,4 @@
-package com.example.whatdatbus
+package com.chamburr.whatdatbus
 
 import io.flutter.embedding.android.FlutterActivity
 
