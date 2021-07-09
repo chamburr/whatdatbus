@@ -44,7 +44,7 @@ class _HomeState extends State<Home> {
                         ),
                         TextSpan(
                           text:
-                              'An app made by a group of students from Raffles Institution for their Innovation Programme (IvP) project. Special thanks to the teacher-mentor, Mr Justin Yap.\n\n© 2021 Han Cen, Lachlan Goh, Jerome Thio',
+                              'An app made by a group of students from Raffles Institution for their Innovation Programme (IvP) project. Special thanks to the teacher-mentor, Mr Justin Yap and SUTD mentors Dr Anariba and Ms Vanessa Chia.\n\n© 2021 Han Cen, Lachlan Goh, Jerome Thio',
                         ),
                       ],
                     ),
