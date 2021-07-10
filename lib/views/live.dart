@@ -99,7 +99,7 @@ class _LiveState extends State<Live> {
     _controller.startImageStream((CameraImage img) async {
       int time = DateTime.now().millisecondsSinceEpoch;
 
-      if (time - _detecting < 1000) {
+      if (time < _detecting) {
         return;
       }
 
@@ -125,7 +125,7 @@ class _LiveState extends State<Live> {
         .toList();
 
     if (elements.length < 1) {
-      _detecting = DateTime.now().millisecondsSinceEpoch;
+      _detecting = DateTime.now().millisecondsSinceEpoch + 100;
 
       setState(() {
         _busNumber = 'Not Found';
@@ -205,7 +205,7 @@ class _LiveState extends State<Live> {
     await _tts.stop();
     await _tts.speak('Bus $busNumber');
 
-    _detecting = DateTime.now().millisecondsSinceEpoch + 1000;
+    _detecting = DateTime.now().millisecondsSinceEpoch + 1500;
 
     setState(() {
       _busNumber = busNumber;
