@@ -178,6 +178,7 @@ class _LiveState extends State<Live> {
     );
     image = imglib.grayscale(image);
     image = imglib.contrast(image, 200);
+    image = imglib.gaussianBlur(image, 1);
 
     InputImage inputImage = InputImage.fromBytes(
       bytes: Uint8List.fromList(
