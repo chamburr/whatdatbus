@@ -226,11 +226,22 @@ class _LiveState extends State<Live> {
               if (snapshot.connectionState != ConnectionState.done) {
                 return Center(child: CupertinoActivityIndicator());
               }
+
+              double scale = MediaQuery.of(context).size.aspectRatio *
+                  _controller.value.aspectRatio;
+
+              if (scale < 1) scale = 1 / scale;
+
               return Container(
-                padding: EdgeInsets.only(top: 60),
+                padding: EdgeInsets.only(top: 40),
                 width: double.infinity,
                 height: double.infinity,
-                child: CameraPreview(_controller),
+                child: Transform.scale(
+                  scale: scale,
+                  child: Center(
+                    child: CameraPreview(_controller),
+                  ),
+                ),
               );
             },
           ),
