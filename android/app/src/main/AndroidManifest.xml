@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chamburr.whatdatbus">
    <application
-        android:label="whatdatbus"
+        android:label="WhatDatBus"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
