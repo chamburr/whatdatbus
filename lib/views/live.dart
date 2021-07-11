@@ -138,7 +138,7 @@ class _LiveState extends State<Live> {
       _detecting = DateTime.now().millisecondsSinceEpoch + 100;
 
       setState(() {
-        _busNumber = 'Not Found';
+        _busNumber = 'Bus Not Found';
       });
 
       return;
@@ -199,7 +199,7 @@ class _LiveState extends State<Live> {
 
     RecognisedText result = await _detector.processImage(inputImage);
 
-    String busNumber = 'Unknown';
+    String busNumber = 'Bus Unknown';
 
     RegExp regex = RegExp(r'^[A-Z]{0,2}[0-9]{1,3}[A-Za-z]?$');
     for (String text in result.text.replaceAll('\n', ' ').split(' ')) {
@@ -267,9 +267,15 @@ class _LiveState extends State<Live> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
-                  _busNumber == '' ? '' : 'Bus $_busNumber',
+                  _busNumber,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    color: _busNumber.startsWith('Bus ')
+                        ? null
+                        : CupertinoColors.systemRed,
+                    fontSize: _busNumber.startsWith('Bus ') ? null : 48,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
