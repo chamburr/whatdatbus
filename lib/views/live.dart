@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image/image.dart' as imglib;
@@ -95,6 +96,7 @@ class _LiveState extends State<Live> {
     );
 
     await _initController;
+    _controller.lockCaptureOrientation(DeviceOrientation.portraitUp);
 
     _controller.startImageStream((CameraImage img) async {
       int time = DateTime.now().millisecondsSinceEpoch;
