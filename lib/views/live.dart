@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:camera/camera.dart';
@@ -111,11 +112,18 @@ class _LiveState extends State<Live> {
   }
 
   void processImage(CameraImage img) async {
+    int width = img.width;
+    int height = img.height;
+
+    if (Platform.isIOS) {
+      width = img.planes[0].bytesPerRow ~/ 4;
+    }
+
     List<dynamic> recognitions = await Tflite.detectObjectOnFrame(
       bytesList: img.planes.map((plane) => plane.bytes).toList(),
       model: 'SSDMobileNet',
-      imageHeight: img.height,
-      imageWidth: img.width,
+      imageHeight: height,
+      imageWidth: width,
       imageMean: 127.5,
       imageStd: 127.5,
       numResultsPerClass: 1,
@@ -136,8 +144,6 @@ class _LiveState extends State<Live> {
       return;
     }
 
-    int width = img.width;
-    int height = img.height;
     imglib.Image image = imglib.Image(width, height);
 
     if (img.format.group == ImageFormatGroup.yuv420) {
