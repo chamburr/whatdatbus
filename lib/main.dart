@@ -2,9 +2,10 @@ import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
-import 'constants.dart';
+import 'config.dart';
 import 'views/home.dart';
-import 'views/live.dart';
+import 'views/settings.dart';
+import 'views/welcome.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,16 +15,21 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
   ]);
 
+  Preferences preferences = await getPreferences();
+  String route = preferences.welcomeShown ? 'home' : 'welcome';
+
   runApp(CupertinoApp(
     title: TITLE,
     debugShowCheckedModeBanner: false,
     theme: CupertinoThemeData(
       brightness: Brightness.light,
     ),
-    initialRoute: '/',
+    initialRoute: route,
     routes: {
-      '/': (context) => Home(),
-      '/live': (context) => Live(cameras),
+      '/': (context) => null,
+      'home': (context) => Home(cameras, preferences),
+      'settings': (context) => Settings(preferences),
+      'welcome': (context) => Welcome(preferences),
     },
   ));
 }

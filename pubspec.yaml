@@ -17,6 +17,7 @@ dependencies:
   flutter_tts: ^3.1.0
   google_ml_kit: ^0.5.1
   image: ^3.0.2
+  shared_preferences: ^2.0.6
   tflite: 1.1.1
   url_launcher: ^6.0.6
 
@@ -28,6 +29,7 @@ dev_dependencies:
 
 flutter:
   assets:
+    - assets/icons/
     - assets/models/
 
 flutter_icons:
