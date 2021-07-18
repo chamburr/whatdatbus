@@ -383,10 +383,13 @@ class _HomeState extends State<Home> {
                         ? null
                         : CupertinoColors.systemRed,
                     fontSize: _busNumber.startsWith('Bus ')
-                        ? null
-                        : widget.preferences.busFontSize == 'medium'
-                            ? 48
-                            : 64,
+                        ? 20
+                        : <String, double>{
+                            'small': 34,
+                            'medium': 48,
+                            'large': 60,
+                            'veryLarge': 72,
+                          }[widget.preferences.busFontSize],
                     fontWeight: FontWeight.bold,
                   ),
                 ),

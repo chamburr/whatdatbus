@@ -185,29 +185,87 @@ class _SettingsState extends State<Settings> {
                       },
                     ),
                   ),
-                  CupertinoFormRow(
-                    prefix: Text('Bus font size'),
+                  GestureDetector(
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(5, 2, 5, 2),
-                      child: CupertinoSlidingSegmentedControl(
-                        children: {
-                          'medium': Text(
-                            'Medium',
-                            style: TextStyle(fontWeight: FontWeight.normal),
+                      child: CupertinoFormRow(
+                        prefix: Text('Bus font size'),
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(0, 6, 0, 6),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                widget.preferences.busFontSize[0]
+                                          .toUpperCase() +
+                                      widget.preferences.busFontSize
+                                          .split(RegExp(r'(?=[A-Z])'))
+                                          .join(' ')
+                                          .toLowerCase()
+                                          .substring(1),
+                                style: TextStyle(
+                                  color: CupertinoColors.systemGrey,
+                                ),
+                              ),
+                              SizedBox(width: 5),
+                              Icon(
+                                CupertinoIcons.chevron_forward,
+                                size: 24,
+                                color: CupertinoColors.systemGrey3,
+                              ),
+                            ],
                           ),
-                          'large': Text(
-                            'Large',
-                            style: TextStyle(fontWeight: FontWeight.normal),
-                          ),
-                        },
-                        groupValue: widget.preferences.busFontSize,
-                        onValueChanged: (String value) {
-                          setState(() {
-                            widget.preferences.update(busFontSize: value);
-                          });
-                        },
+                        ),
                       ),
+                      color: CupertinoColors.white,
                     ),
+                    onTap: () async {
+                      String busFontSize = await showCupertinoModalPopup(
+                        context: context,
+                        builder: (context) {
+                          return CupertinoActionSheet(
+                            title: Text('Choose bus font size'),
+                            actions: [
+                              CupertinoActionSheetAction(
+                                child: Text('Small'),
+                                onPressed: () {
+                                  Navigator.of(context).pop('small');
+                                },
+                              ),
+                              CupertinoActionSheetAction(
+                                child: Text('Medium'),
+                                onPressed: () {
+                                  Navigator.of(context).pop('medium');
+                                },
+                              ),
+                              CupertinoActionSheetAction(
+                                child: Text('Large'),
+                                onPressed: () {
+                                  Navigator.of(context).pop('large');
+                                },
+                              ),
+                              CupertinoActionSheetAction(
+                                child: Text('Very large'),
+                                onPressed: () {
+                                  Navigator.of(context).pop('veryLarge');
+                                },
+                              ),
+                            ],
+                            cancelButton: CupertinoActionSheetAction(
+                              child: Text('Cancel'),
+                              isDestructiveAction: true,
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pop(widget.preferences.busFontSize);
+                              },
+                            ),
+                          );
+                        },
+                      );
+
+                      setState(() {
+                        widget.preferences.update(busFontSize: busFontSize);
+                      });
+                    },
                   ),
                 ],
               ),

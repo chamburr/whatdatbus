@@ -30,7 +30,7 @@ class Preferences {
     targetBuses = _preferences.getStringList('targetBuses') ?? [];
     auditoryFeedback = _preferences.getBool('auditoryFeedback') ?? true;
     vibration = _preferences.getBool('vibration') ?? false;
-    busFontSize = _preferences.getString('busFontSize') ?? 'medium';
+    busFontSize = _preferences.getString('busFontSize') ?? 'large';
     developerMode = _preferences.getBool('developerMode') ?? false;
     imageQuality = _preferences.getString('imageQuality') ?? 'veryHigh';
   }
