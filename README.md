@@ -1,4 +1,4 @@
-# What Dat Bus
+# WhatDatBus
 
 This app helps visually-impaired persons to board the bus by actively telling them what buses are currently in front of them.
 
