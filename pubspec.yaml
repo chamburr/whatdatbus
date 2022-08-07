@@ -12,14 +12,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-  camera: ^0.8.1
-  cupertino_icons: ^1.0.2
-  flutter_tts: ^3.1.0
+  camera: ^0.10.0
+  cupertino_icons: ^1.0.5
+  flutter_tts: ^3.5.0
   google_ml_kit: ^0.5.1
-  image: ^3.0.2
-  shared_preferences: ^2.0.6
+  image: ^3.2.0
+  shared_preferences: ^2.0.15
   tflite: 1.1.1
-  url_launcher: ^6.0.6
+  url_launcher: ^6.1.5
 
 dev_dependencies:
   flutter_test:
